@@ -7,25 +7,30 @@
       "style": "scss"
     }
   },
-  "sourceRoot": "apps/ludotheque/src",
+  "sourceRoot": "apps/ludotheque-front/src",
   "prefix": "app",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:application",
       "options": {
-        "outputPath": "dist/apps/ludotheque",
-        "index": "apps/ludotheque/src/index.html",
-        "browser": "apps/ludotheque/src/main.ts",
-        "polyfills": ["zone.js"],
-        "tsConfig": "apps/ludotheque/tsconfig.app.json",
+        "outputPath": "dist/apps/ludotheque-front",
+        "index": "apps/ludotheque-front/src/index.html",
+        "browser": "apps/ludotheque-front/src/main.ts",
+        "polyfills": [
+          "zone.js"
+        ],
+        "tsConfig": "apps/ludotheque-front/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/ludotheque/public"
+            "input": "apps/ludotheque-front/public"
           }
         ],
-        "styles": ["apps/ludotheque/src/styles.scss"],
+        "styles": [
+          "@angular/material/prebuilt-themes/rose-red.css",
+          "apps/ludotheque-front/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -56,10 +61,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "buildTarget": "ludotheque:build:production"
+          "buildTarget": "ludotheque-front:build:production"
         },
         "development": {
-          "buildTarget": "ludotheque:build:development"
+          "buildTarget": "ludotheque-front:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -70,16 +75,22 @@
     "test": {
       "executor": "@angular-devkit/build-angular:karma",
       "options": {
-        "polyfills": ["zone.js", "zone.js/testing"],
-        "tsConfig": "apps/ludotheque/tsconfig.spec.json",
+        "polyfills": [
+          "zone.js",
+          "zone.js/testing"
+        ],
+        "tsConfig": "apps/ludotheque-front/tsconfig.spec.json",
         "inlineStyleLanguage": "scss",
         "assets": [
           {
             "glob": "**/*",
-            "input": "apps/ludotheque/public"
+            "input": "apps/ludotheque-front/public"
           }
         ],
-        "styles": ["apps/ludotheque/src/styles.scss"],
+        "styles": [
+          "@angular/material/prebuilt-themes/rose-red.css",
+          "apps/ludotheque-front/src/styles.scss"
+        ],
         "scripts": []
       }
     }

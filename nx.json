@@ -32,5 +32,10 @@
         "watchDepsTargetName": "watch-deps"
       }
     }
-  ]
+  ],
+  "generators": {
+    "@nx/angular:component": {
+      "style": "css"
+    }
+  }
 }
