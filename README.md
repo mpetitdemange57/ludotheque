@@ -2,7 +2,7 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.6.
 
-## Instruction
+## Instruction création répo
 
 ```bash
 ng new ludotheque
@@ -29,4 +29,9 @@ nx serve --project="ludotheque-front"
 
 ```bash
 nx serve --project="ludotheque-backend"
+```
+
+## Lancement backend
+```bash
+npx json-server db/db.json 
 ```
