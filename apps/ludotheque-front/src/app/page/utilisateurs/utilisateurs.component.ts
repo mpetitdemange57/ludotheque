@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {HeaderComponent} from "../../shared/header.component";
-import {MatAnchor, MatButton, MatFabAnchor, MatIconButton} from "@angular/material/button";
-import {MatIcon} from "@angular/material/icon";
+import {TableauUtilisateursComponent} from "./tableau-utilisateurs/tableau-utilisateurs.component";
+import {UtilisateursService} from "../../shared/services/utilisateurs.service";
 
 @Component({
   selector: 'app-utilisateurs',
     imports: [
         HeaderComponent,
-        MatButton,
-        MatIconButton,
-        MatIcon,
-        MatAnchor,
-        MatFabAnchor
+        TableauUtilisateursComponent
     ],
   templateUrl: './utilisateurs.component.html',
   styleUrl: './utilisateurs.component.scss'
 })
 export class UtilisateursComponent {
+
+    constructor(private readonly utilisateursService: UtilisateursService) {
+        this.utilisateursService.findAll();
+    }
+
+    getListUtilisateurs(){
+        return this.utilisateursService.listUtilisateurs();
+    }
 
 }
