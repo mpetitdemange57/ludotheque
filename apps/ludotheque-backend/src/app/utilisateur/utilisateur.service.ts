@@ -12,7 +12,9 @@ export class UtilisateurService {
     }
 
     public findAll(): Promise<UtilisateurEntity[]> {
-        return this.utilisateurRepository.find({});
+        return this.utilisateurRepository.find({order: {
+            "nom" : "asc"
+            }});
     }
 
     public findOne(id: number): Promise<UtilisateurEntity | null> {
@@ -20,6 +22,7 @@ export class UtilisateurService {
     }
 
     create(utilisateur: UtilisateurDto) {
-        return this.utilisateurRepository.create(utilisateur);
+        console.log(utilisateur)
+        return this.utilisateurRepository.save(this.utilisateurRepository.create(utilisateur));
     }
 }

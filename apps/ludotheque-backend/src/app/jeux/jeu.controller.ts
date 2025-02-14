@@ -14,6 +14,7 @@ export class JeuController {
 
     @Post()
     create(@Body() jeu:JeuDto) {
+        console.log(jeu);
         return this.jeuService.create(jeu);
     }
 

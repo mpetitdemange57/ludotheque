@@ -1,14 +1,24 @@
 <app-header></app-header>
-<form>
-    <mat-form-field class="example-full-width">
-        <mat-label>Nom</mat-label>
-        <input matInput placeholder="Ex. Chaplin">
-    </mat-form-field>
 
-    <mat-form-field class="example-full-width">
-        <mat-label>Prenom</mat-label>
-        <textarea matInput placeholder="Ex. Charlie"></textarea>
-    </mat-form-field>
+<div class="flex justify-center p-8">
+    <mat-card appearance="outlined" class="w-1/3">
+        <mat-card-content>
+            <form class="flex flex-col gap-2" (submit)="sauvegarder()">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nom</mat-label>
+                    <input matInput placeholder="Ex. CHAPLIN" [ngModel]="form.nom" (ngModelChange)="form.nom = $event.toUpperCase()" name="nom" >
+                </mat-form-field>
 
-    <button mat-button>Ajouter</button>
-</form>
+                <mat-form-field class="example-full-width" >
+                    <mat-label>Prénom</mat-label>
+                    <input matInput placeholder="Ex. Charlie" [(ngModel)]="form.prenom" name="prenom">
+                </mat-form-field>
+
+                <div>
+                    <button mat-button type="reset">Annuler</button>
+                    <button mat-button type="submit">Ajouter</button>
+                </div>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>

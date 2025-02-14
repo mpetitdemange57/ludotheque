@@ -1,6 +1,9 @@
 <mat-toolbar>
     <div class="flex gap-2">
-        <span [routerLink]="'/accueil'">Ludothèque</span>
+        <div [routerLink]="'/accueil'" class="flex gap-1 items-center cursor-pointer">
+            <img ngSrc="favicon.ico" alt="" width="30" height="30" style="height: 40px; width: 40px;" class="rounded-lg">
+            <span>Ludothèque</span>
+        </div>
         <span class="example-spacer"></span>
         <button [routerLink]="'/jeux'" mat-button aria-label="Jeux">
             Jeux

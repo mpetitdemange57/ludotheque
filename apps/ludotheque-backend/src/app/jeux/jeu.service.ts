@@ -13,11 +13,16 @@ export class JeuService {
 
 
     findAll(): Promise<JeuEntity[]> {
-        return this.jeuRepository.find();
+        return this.jeuRepository.find({
+            order: {
+                titre: 'asc'
+            }
+        });
     }
 
-    create(jeu: JeuDto): JeuEntity {
-        return this.jeuRepository.create(jeu);
+    create(jeu: JeuDto){
+        console.log(jeu);
+        return this.jeuRepository.save(this.jeuRepository.create(jeu));
     }
 
     deleteById(id: number): Promise<DeleteResult> {

@@ -3,7 +3,7 @@ import {UtilisateurEntity} from "../utilisateur/utilisateur.entity";
 
 @Entity("jeux")
 export class JeuEntity {
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn('increment')
     id!: number;
 
     @Column()
