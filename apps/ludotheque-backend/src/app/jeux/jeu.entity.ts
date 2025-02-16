@@ -29,6 +29,6 @@ export class JeuEntity {
     emprunteur?: UtilisateurEntity | null;
 
     @Column({ nullable: true })
-    dateEmprunt?: string;
+    dateEmprunt?: Date;
 
 }

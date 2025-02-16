@@ -11,23 +11,20 @@ export class UtilisateurService {
     constructor( @InjectRepository(UtilisateurEntity)  private readonly utilisateurRepository: Repository<UtilisateurEntity>,) {
     }
 
-    public findAll(): Promise<UtilisateurEntity[]> {
+    findAll(): Promise<UtilisateurEntity[]> {
         return this.utilisateurRepository.find({order: {
             "nom" : "asc"
             }});
     }
 
-    public findOne(id: number): Promise<UtilisateurEntity | null> {
+    findOne(id: number): Promise<UtilisateurEntity | null> {
         return this.utilisateurRepository.findOne({where: {id: id}});
     }
 
-    create(utilisateur: UtilisateurDto) {
-        return this.utilisateurRepository.save(this.utilisateurRepository.create(utilisateur));
+    createOrUpdate(utilisateur: UtilisateurDto) {
+        return this.utilisateurRepository.upsert(this.utilisateurRepository.create(utilisateur), ['id']);
     }
 
-    edit(utilisateur: UtilisateurDto) {
-        return this.utilisateurRepository.save(utilisateur);
-    }
 
     deleteById(id:number) {
         return this.utilisateurRepository.delete({id: id});

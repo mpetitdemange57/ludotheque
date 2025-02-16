@@ -10,18 +10,20 @@
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Proprietaire</mat-label>
-                    <mat-select placeholder="Selectionnez un propriétaire" formControlName="proprietaire">
-                        @for (utilisateur of getListUtilisateurs(); track utilisateur) {
-                            <mat-option [value]="utilisateur.id">{{utilisateur.nom + " " + utilisateur.prenom}}</mat-option>
+                    <mat-select placeholder="Selectionnez un propriétaire" [compareWith]="compareUtilisateur" formControlName="proprietaire">
+                        <mat-option [value]="null"></mat-option>
+                        @for (utilisateur of getListUtilisateurs(); track utilisateur.id) {
+                            <mat-option [value]="utilisateur">{{utilisateur.nom + " " + utilisateur.prenom}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Emprunteur</mat-label>
-                    <mat-select placeholder="Selectionnez un emprunteur" formControlName="emprunteur">
-                        @for (utilisateur of getListUtilisateurs(); track utilisateur) {
-                            <mat-option [value]="utilisateur.id">{{utilisateur.nom + " " + utilisateur.prenom}}</mat-option>
+                    <mat-select placeholder="Selectionnez un emprunteur" [compareWith]="compareUtilisateur" formControlName="emprunteur">
+                        <mat-option [value]="null"></mat-option>
+                        @for (utilisateur of getListUtilisateurs(); track utilisateur.id) {
+                            <mat-option [value]="utilisateur">{{utilisateur.nom + " " + utilisateur.prenom}}</mat-option>
                         }
                     </mat-select>
                 </mat-form-field>
@@ -37,7 +39,9 @@
 
                 <div>
                     <button mat-button type="reset" (click)="annuler()">Annuler</button>
-                    <button mat-button>Ajouter</button>
+                    <button mat-button>@if(type == 'EDITER'){Editer} @else {
+                        AJOUTER
+                    }</button>
                 </div>
             </form>
         </mat-card-content>

@@ -1,4 +1,4 @@
-import {Component, Input, LOCALE_ID} from '@angular/core';
+import {Component, inject, Input, LOCALE_ID} from '@angular/core';
 import {
     MatCell,
     MatCellDef,
@@ -15,10 +15,13 @@ import {
 import {JeuDto} from "../../../../../../../libs/contrat/JeuDto";
 import {MatButton, MatFabAnchor, MatIconButton} from "@angular/material/button";
 import {MatTooltip} from "@angular/material/tooltip";
-import {RouterLink} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {MatIcon} from "@angular/material/icon";
 import {MatPaginator, MatPaginatorModule} from "@angular/material/paginator";
 import {DatePipe} from "@angular/common";
+import {JeuService} from "../../../../../../ludotheque-backend/src/app/jeux/jeu.service";
+import {JeuxService} from "../../../shared/services/jeux.service";
+import {MatSnackBar} from "@angular/material/snack-bar";
 
 @Component({
   selector: 'app-tableau-jeux',
@@ -50,5 +53,21 @@ export class TableauJeuxComponent {
 
     @Input()
     listJeux: JeuDto[] = [];
+
+    router = inject(Router);
+    jeuxService = inject(JeuxService);
+    snackBar = inject(MatSnackBar);
+
+    edit(id:number) {
+        this.router.navigate(['jeux','edit',id]).then(null)
+    }
+
+    delete(id:number) {
+        this.jeuxService.delete(id)
+            .subscribe(() => {
+                this.jeuxService.findAll();
+                this.snackBar.open("Jeu supprimé", "Fermer", {duration: 1000})
+            })
+    }
 
 }

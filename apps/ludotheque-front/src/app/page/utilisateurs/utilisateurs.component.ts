@@ -9,8 +9,7 @@ import {UtilisateursService} from "../../shared/services/utilisateurs.service";
         HeaderComponent,
         TableauUtilisateursComponent
     ],
-  templateUrl: './utilisateurs.component.html',
-  styleUrl: './utilisateurs.component.scss'
+  templateUrl: './utilisateurs.component.html'
 })
 export class UtilisateursComponent {
 

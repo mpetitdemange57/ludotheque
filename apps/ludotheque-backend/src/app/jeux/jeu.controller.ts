@@ -12,10 +12,14 @@ export class JeuController {
         return this.jeuService.findAll();
     }
 
+    @Get(':id')
+    findOne(@Param() params: any) {
+        return this.jeuService.findOne(params.id);
+    }
+
     @Post()
-    create(@Body() jeu:JeuDto) {
-        console.log(jeu);
-        return this.jeuService.create(jeu);
+    createOrUpdate(@Body() jeu:JeuDto) {
+        return this.jeuService.createOrUpdate(jeu);
     }
 
     @Delete(':id')

@@ -18,15 +18,9 @@ export class UtilisateurController {
     }
 
     @Post()
-    create(@Body() utilisateur:UtilisateurDto) {
+    createOrUpdate(@Body() utilisateur:UtilisateurDto) {
         console.log(utilisateur)
-        return this.utilisateurService.create(utilisateur);
-    }
-
-    @Put()
-    edit(@Body() utilisateur:UtilisateurDto) {
-        console.log(utilisateur)
-        return this.utilisateurService.edit(utilisateur);
+        return this.utilisateurService.createOrUpdate(utilisateur);
     }
 
     @Delete(':id')

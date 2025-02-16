@@ -10,9 +10,11 @@ import {MatSnackBar} from "@angular/material/snack-bar";
 export class JeuxService {
 
   private readonly PATH = '/jeux'
+
+  jeuAEditer = signal<JeuDto | null>(null)
   listJeux = signal<Array<JeuDto>>([])
 
-  constructor(private readonly dataService:DataService, private readonly snackBar: MatSnackBar) { }
+  constructor(private readonly dataService:DataService) { }
 
   findAll(){
     this.dataService
@@ -21,10 +23,19 @@ export class JeuxService {
   }
 
   save(form: JeuDto) {
-    this.dataService.sendPostRequest(this.PATH, form)
-        .subscribe(() => {
-          this.snackBar.open("Jeu sauvegardé","Fermer")
+    return this.dataService.sendPostRequest(this.PATH, form);
+  }
+
+  findById(id: string) {
+    this.dataService.sendGetRequest<JeuDto>(this.PATH + "/" + id)
+        .subscribe((value) => {
+          this.jeuAEditer.set(value);
         })
   }
+
+    delete(id: number) {
+        return this.dataService.sendDeleteRequest(this.PATH + "/" + id);
+    }
+
 
 }
