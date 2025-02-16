@@ -5,5 +5,6 @@ export interface JeuDto{
     titre: string,
     proprietaire?:UtilisateurDto,
     emprunteur?:UtilisateurDto,
+    dateEmprunt?: Date
 
 }

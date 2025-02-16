@@ -22,12 +22,13 @@ export class JeuService {
 
     create(jeu: JeuDto){
         console.log(jeu);
-        return this.jeuRepository.save(this.jeuRepository.create(jeu));
+        return this.jeuRepository.save(this.jeuRepository.create(jeu as JeuEntity));
     }
 
     deleteById(id: number): Promise<DeleteResult> {
-        return this.jeuRepository.delete({
+        return this.jeuRepository.softDelete({
             id: id
         });
     }
+
 }

@@ -22,7 +22,14 @@ export class UtilisateurService {
     }
 
     create(utilisateur: UtilisateurDto) {
-        console.log(utilisateur)
         return this.utilisateurRepository.save(this.utilisateurRepository.create(utilisateur));
+    }
+
+    edit(utilisateur: UtilisateurDto) {
+        return this.utilisateurRepository.save(utilisateur);
+    }
+
+    deleteById(id:number) {
+        return this.utilisateurRepository.delete({id: id});
     }
 }

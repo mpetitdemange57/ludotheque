@@ -18,7 +18,8 @@
         <!-- Colonne Propriétaire -->
         <ng-container matColumnDef="proprietaire">
             <th mat-header-cell *matHeaderCellDef> Propriétaire </th>
-            <td mat-cell *matCellDef="let jeu"> {{ jeu.proprietaire.prenom }} {{ jeu.proprietaire.nom }} </td>
+            <td mat-cell *matCellDef="let jeu">
+                {{ jeu.proprietaire ? jeu.proprietaire.prenom + ' ' + jeu.proprietaire.nom : 'Don' }} </td>
         </ng-container>
 
         <!-- Colonne Emprunteur -->
@@ -34,6 +35,19 @@
             <th mat-header-cell *matHeaderCellDef> Date d'emprunt </th>
             <td mat-cell *matCellDef="let jeu">
                 {{ jeu.dateEmprunt ? (jeu.dateEmprunt | date:'shortDate') : '-' }}
+            </td>
+        </ng-container>
+
+        <!-- Colonne Boutons d'actions -->
+        <ng-container matColumnDef="boutons">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let jeu">
+                <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon>delete</mat-icon>
+                </button>
             </td>
         </ng-container>
 

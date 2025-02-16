@@ -7,7 +7,7 @@ import {MatCard, MatCardContent} from "@angular/material/card";
 import {FormsModule} from "@angular/forms";
 import {UtilisateursService} from "../../shared/services/utilisateurs.service";
 import {UtilisateurDto} from "../../../../../../libs/contrat/UtilisateurDto";
-import {UpperCasePipe} from "@angular/common";
+import {LocationStrategy, UpperCasePipe} from "@angular/common";
 
 @Component({
   selector: 'app-ajout-utilisateur',
@@ -29,7 +29,7 @@ export class AjoutUtilisateurComponent {
     form: UtilisateurDto = {}
 
 
-    constructor(private readonly utilisateursService: UtilisateursService) {
+    constructor(private readonly utilisateursService: UtilisateursService, private readonly location:LocationStrategy) {
 
     }
 
@@ -37,7 +37,5 @@ export class AjoutUtilisateurComponent {
         this.utilisateursService.save(this.form)
     }
 
-    annuler() {
-
-    }
+    annuler = () => this.location.back();
 }

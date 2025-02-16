@@ -13,7 +13,7 @@ import {
     MatTableDataSource
 } from "@angular/material/table";
 import {JeuDto} from "../../../../../../../libs/contrat/JeuDto";
-import {MatFabAnchor} from "@angular/material/button";
+import {MatButton, MatFabAnchor, MatIconButton} from "@angular/material/button";
 import {MatTooltip} from "@angular/material/tooltip";
 import {RouterLink} from "@angular/router";
 import {MatIcon} from "@angular/material/icon";
@@ -39,13 +39,14 @@ import {DatePipe} from "@angular/common";
         MatIcon,
         MatPaginatorModule,
         DatePipe,
+        MatIconButton,
     ],
   templateUrl: './tableau-jeux.component.html',
   styleUrl: './tableau-jeux.component.scss'
 })
 export class TableauJeuxComponent {
 
-    displayedColumns: string[] = ['id', 'titre', 'proprietaire', 'emprunteur', 'dateEmprunt'];
+    displayedColumns: string[] = ['id', 'titre', 'proprietaire', 'emprunteur', 'dateEmprunt', 'boutons'];
 
     @Input()
     listJeux: JeuDto[] = [];

@@ -6,17 +6,17 @@
             <form class="flex flex-col gap-2" (submit)="sauvegarder()">
                 <mat-form-field class="example-full-width">
                     <mat-label>Nom</mat-label>
-                    <input matInput placeholder="Ex. CHAPLIN" [ngModel]="form.nom" (ngModelChange)="form.nom = $event.toUpperCase()" name="nom" >
+                    <input matInput placeholder="Ex. CHAPLIN" required [ngModel]="form.nom" (ngModelChange)="form.nom = $event.toUpperCase()" name="nom" >
                 </mat-form-field>
 
-                <mat-form-field class="example-full-width" >
+                <mat-form-field class="example-full-width">
                     <mat-label>Prénom</mat-label>
-                    <input matInput placeholder="Ex. Charlie" [(ngModel)]="form.prenom" name="prenom">
+                    <input matInput placeholder="Ex. Charlie" required [(ngModel)]="form.prenom" name="prenom">
                 </mat-form-field>
 
                 <div>
-                    <button mat-button type="reset">Annuler</button>
-                    <button mat-button type="submit">Ajouter</button>
+                    <button mat-button type="reset" (click)="annuler()">Annuler</button>
+                    <button mat-button type="submit" [disabled]="form.nom == null || form.nom.length === 0 || form.prenom == null || form.prenom.length === 0" >Ajouter</button>
                 </div>
             </form>
         </mat-card-content>

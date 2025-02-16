@@ -23,7 +23,17 @@ export class UtilisateursService {
   save(form: UtilisateurDto) {
     this.dataService.sendPostRequest(this.PATH, form)
         .subscribe(() => {
-          this.snackBar.open("Utilisateur sauvegardé","Fermer")
+          this.snackBar.open("Utilisateur sauvegardé","Fermer", {
+            duration: 1000
+          })
+        })
+  }
+
+  delete(id: number) {
+    this.dataService.sendDeleteRequest(this.PATH + "/" + id)
+        .subscribe(() => {
+          this.findAll();
+          this.snackBar.open("Utilisateur supprimé","Fermer", {duration: 1000})
         })
   }
 }

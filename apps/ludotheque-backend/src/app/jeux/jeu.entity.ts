@@ -9,13 +9,24 @@ export class JeuEntity {
     @Column()
     titre!: string;
 
-    @OneToOne(() => UtilisateurEntity, utilisateur => utilisateur.id, {nullable: true, eager: true})
+    @ManyToOne(() => UtilisateurEntity, utilisateur => utilisateur.id,  {
+        onDelete: 'SET NULL',
+        nullable: true,
+        eager: true,
+    })
     @JoinColumn()
-    proprietaire?: UtilisateurEntity;
+    proprietaire?: UtilisateurEntity | null;
 
-    @ManyToOne(() => UtilisateurEntity, utilisateur => utilisateur.id, {nullable: true, eager: true})
+    @ManyToOne(() => UtilisateurEntity,
+            utilisateur => utilisateur.id,
+        {
+            onDelete: 'SET NULL',
+            nullable: true,
+            eager: true,
+        }
+    )
     @JoinColumn()
-    emprunteur?: UtilisateurEntity;
+    emprunteur?: UtilisateurEntity | null;
 
     @Column({ nullable: true })
     dateEmprunt?: string;
