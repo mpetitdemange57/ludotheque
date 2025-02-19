@@ -22,7 +22,7 @@ export class AccueilComponent {
       "🔄 Le prêt de jeux, comment ça marche ?\n" +
       "Empruntez vos jeux préférés pour une durée indéfinie et profitez-en tranquillement chez vous.\n\n" +
       "📍 Où nous trouver ?\n" +
-      "Contactez Stanislas Geant !\n\n" +
+      "Contactez Stan Geant !\n\n" +
       "Rejoignez-nous et plongez dans un monde de divertissement et de partage !\n\n" +
       "À très bientôt ! 🎭♟️🎯"
 
